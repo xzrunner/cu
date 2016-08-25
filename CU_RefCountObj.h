@@ -37,6 +37,20 @@ struct RemoveRefFonctor
 }; // RemoveRefFonctor
 
 template<class T>
+void RefCountObjAssign(const T*& left, const T*& right)
+{
+	if (left != right) {
+		if (left) {
+			left->RemoveReference();
+		}
+		left = right;
+		if (right) {
+			right->AddReference();
+		}
+	}
+}
+
+template<class T>
 void RefCountObjAssign(T*& left, T*& right)
 {
 	if (left != right) {
