@@ -15,6 +15,8 @@ public:
 	void AddReference() const;
 	void RemoveReference() const;
 
+	int GetRefCount() const { return m_ref_count; }
+
 private:
 	mutable int m_ref_count;
 
