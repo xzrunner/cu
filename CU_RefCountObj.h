@@ -23,20 +23,20 @@ private:
 }; // RefCountObj
 
 template<class T>
-struct AddRefFonctor
+struct AddRefFunctor
 {
 	void operator()(const T* p) const {
 		p->AddReference();
 	}
-}; // AddRefFonctor
+}; // AddRefFunctor
 
 template<class T>
-struct RemoveRefFonctor
+struct RemoveRefFunctor
 {
 	void operator()(const T* p) const {
 		p->RemoveReference();
 	}
-}; // RemoveRefFonctor
+}; // RemoveRefFunctor
 
 template<class T>
 void RefCountObjAssign(const T*& left, const T*& right)
