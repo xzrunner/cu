@@ -12,8 +12,8 @@ public:
 	RefCountObj& operator = (const RefCountObj& obj);
 	virtual ~RefCountObj() = 0;
 
-	void AddReference() const;
-	void RemoveReference() const;
+	virtual void AddReference() const;
+	virtual void RemoveReference() const;
 
 	int GetRefCount() const { return m_ref_count; }
 
