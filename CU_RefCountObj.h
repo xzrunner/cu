@@ -66,6 +66,20 @@ void RefCountObjAssign(T*& left, T*& right)
 	}
 }
 
+template<class T>
+void RefCountObjAssign(T*& left, T* const & right)
+{
+	if (left != right) {
+		if (left) {
+			left->RemoveReference();
+		}
+		left = right;
+		if (right) {
+			right->AddReference();
+		}
+	}
+}
+
 }
 
 #include "CU_RefCountObj.inl"
