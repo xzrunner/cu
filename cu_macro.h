@@ -3,10 +3,19 @@
 
 #include <stddef.h>
 
-namespace cu
-{
+#define CU_FLAG_METHOD(name, bit) \
+	bool Is##name() const { \
+		return (m_flags & bit) != 0; \
+	} \
+	void Set##name(bool flag) const { \
+		if (flag) { \
+			m_flags |= bit; \
+		} else { \
+			m_flags &= ~bit; \
+		} \
+	}
 
-#define SINGLETON_DECLARATION(name) \
+#define CU_SINGLETON_DECLARATION(name) \
 	public: \
 		static name* Instance(); \
 	private: \
@@ -15,7 +24,7 @@ namespace cu
 	private: \
 		static name* m_instance;
 
-#define SINGLETON_DEFINITION(name) \
+#define CU_SINGLETON_DEFINITION(name) \
 	name* name::m_instance = NULL; \
 	name* name::Instance() \
 	{ \
@@ -24,7 +33,5 @@ namespace cu
 		} \
 		return m_instance; \
 	}
-
-}
 
 #endif // _CLASS_UTILITY_SINGLETON_H_
