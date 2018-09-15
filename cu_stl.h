@@ -1,7 +1,7 @@
 #ifndef _CLASS_UTILITY_STL_H_
 #define _CLASS_UTILITY_STL_H_
 
-#define USE_MM_ALLOCATOR
+//#define USE_MM_ALLOCATOR
 
 #ifdef USE_MM_ALLOCATOR
 #include <memmgr/Allocator.h>
